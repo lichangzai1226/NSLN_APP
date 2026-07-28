@@ -1,0 +1,5 @@
+# Optional dependencies for the local/intranet NIfTI + mask workflow.
+# Install this file after requirements.txt, then install PyRadiomics separately:
+# pip install --no-build-isolation PyRadiomics==3.0.1
+SimpleITK==2.2.1
+PyYAML==6.0.2
