@@ -1,0 +1,73 @@
+{
+  "model_name": "Clinical–intratumoral radiomics fusion model for NSLN metastasis",
+  "model_version": "1.0.0-research",
+  "development_date": "2026-07-26",
+  "population": "Clinically node-negative breast cancer with at least one positive sentinel lymph node",
+  "outcome": "Non-sentinel lymph node metastasis",
+  "radscore": {
+    "intercept": -1.2348085538915647,
+    "features": {
+      "original_glcm_InverseVariance": {
+        "aliases": [
+          "original_glcm_InverseVariance",
+          "Tumor_original_glcm_InverseVariance"
+        ],
+        "median": 0.3792293026,
+        "mean": 0.3662705939,
+        "sd_ddof0": 0.06669016216,
+        "coefficient": 0.446705937002006
+      },
+      "original_glszm_SizeZoneNonUniformityNormalized": {
+        "aliases": [
+          "original_glszm_SizeZoneNonUniformityNormalized",
+          "Tumor_original_glszm_SizeZoneNonUniformityNormalized"
+        ],
+        "median": 0.2651123967,
+        "mean": 0.2777529825,
+        "sd_ddof0": 0.07457748531,
+        "coefficient": -0.12066090036619859
+      }
+    }
+  },
+  "clinical_model": {
+    "intercept": -1.4580923581710346,
+    "coefficients": {
+      "SLN_2_vs_1": 0.5326391195620443,
+      "SLN_3plus_vs_1": 1.0093035744645096
+    }
+  },
+  "fusion_model": {
+    "intercept": 0.28021264892997544,
+    "coefficients": {
+      "Intratumoral_Rad_score": 1.7662724147621984,
+      "SLN_2_vs_1": 0.8041848310599198,
+      "SLN_3plus_vs_1": 1.6300617233755659
+    },
+    "descriptive_youden_cutoff": 0.20805182108401848
+  },
+  "internal_validation": {
+    "n": 205,
+    "positive_n": 49,
+    "method": "Nested stratified five-fold cross-validation with pooled patient-level OOF predictions",
+    "radiomics_auc": 0.738880167451596,
+    "fusion_auc": 0.7748560962846677,
+    "fusion_auc_ci95": [
+      0.7067054696373968,
+      0.8395321499347504
+    ],
+    "fusion_brier": 0.15623475412009755
+  },
+  "radiomics_reference_environment": {
+    "pyradiomics": "v3.0.1.post15+g2791e23 (3D Slicer extension)",
+    "numpy": "1.23.4",
+    "simpleitk": "2.2.0rc2.dev368",
+    "python": "3.9.10",
+    "enabled_image_types": {
+      "Original": {}
+    }
+  },
+  "deployment_flags": {
+    "nifti_auto_extraction_validated_against_slicer": false,
+    "validation_note": "Initial three-case screen did not reproduce the original Slicer feature values; keep the public NIfTI prediction entry locked until the exact development image/mask files and software environment pass equivalence testing."
+  }
+}
